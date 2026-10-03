@@ -5,61 +5,58 @@
 ## 1. Descripción del problema (Fase 1)
 <!-- Explica con tus palabras qué hace tu programa y para qué serviría en la vida real. Máximo 4 líneas. -->
 
-_____
+____Tu le das 3 numers el prgrama hagara el mayor de los tres_
 
 ## 2. Entradas y salidas (Fase 1)
 <!-- Define cada entrada y cada salida, con su tipo de dato y su objetivo. -->
 
 **Entradas:**
-1. _____
-2. _____
-3. _____
+primero: número decimal (double), el primer número que escribe el usuario.
+segundo: número decimal (double), el segundo número.
+tercero: número decimal (double), el tercer número.
 
 **Salida:**
-1. _____
+1mayor: número decimal (double), el valor más grande de los tres, mostrado en pantalla con un mensaje.
 
 **¿Muestro el valor del mayor o cuál de los tres fue (primero, segundo o tercero)? ¿Por qué?**
-_____
+Muestro el valor del mayor. Si hay empate, "cuál fue" no tiene una sola respuesta (en 7, 7, 3 el mayor es el primero y el segundo a la vez), en cambio el valor siempre es uno solo.
 
 **¿Qué función de `utilerias.h` uso para leer los números? ¿Por qué esa y no la otra?**
-_____
+Uso leerDecimal, porque el problema no dice que los números sean enteros. Con leerEntero no se podrían comparar números como 2.5, 2.7 y 2.6.
 
 ## 3. Restricciones e invariante (Fases 1 y 2)
 
 **Restricciones** (¿qué debe cumplirse?):
-- _____
-- _____
+- Los tres datos deben ser números (enteros o decimales).
+El programa siempre debe mostrar un resultado, sin importar los números que escriba el usuario.
 
 **¿Hace falta validar el rango de los números (por ejemplo, rechazar el 0 o los negativos)? ¿Por qué?**
-_____
+o hace falta. Cualquier número sirve para comparar, incluidos el 0 y los negativos, a diferencia de la Práctica 3, donde las medidas tenían un rango válido.
 
 **¿Qué hace mi programa cuando dos números son iguales y son los mayores? ¿Y cuando los tres son iguales?**
-_____
-
+Muestra ese valor una sola vez. Con 7, 7, 3 muestra 7, y con 5, 5, 5 muestra 5. Esto funciona porque uso >= en las comparaciones, así que siempre se cumple alguna condición.
 **¿Quién detecta cada error?** (¿qué revisa la función de `utilerias.h` y qué reviso yo?)
-_____
+leerDecimal revisa que lo que escribe el usuario sea un número y, si no lo es (por ejemplo "abc"), vuelve a pedir el dato. Mi programa no revisa nada más, porque cualquier número es válido.
 
 **Invariante** (justo antes de mostrar el resultado, ¿qué es seguro sobre el valor que voy a mostrar?):
-_____
+mayor es igual a uno de los tres números y es mayor o igual que los otros dos.
 
 ## 4. Casos resueltos a mano (Fase 1)
-
-| Caso | Número 1 | Número 2 | Número 3 | Mayor calculado a mano |
-|---|---|---|---|---|
-| 1 (el mayor en primera posición) | _____ | _____ | _____ | _____ |
-| 2 (el mayor en segunda posición) | _____ | _____ | _____ | _____ |
-| 3 (el mayor en tercera posición) | _____ | _____ | _____ | _____ |
-| 4 (con un empate) | _____ | _____ | _____ | _____ |
-| 5 (con negativos) | _____ | _____ | _____ | _____ |
+	Número 1	Número 2	Número 3	Mayor calculado a mano
+1 (el mayor en primera posición)	9	4	2	9
+2 (el mayor en segunda posición)	4	9	2	9
+3 (el mayor en tercera posición)	2	4	9	9
+4 (con un empate)	7	7	3	7
+5 (con negativos)	-4	-1	-9	-1
 
 ## 5. Receta en pseudocódigo (Fase 2)
 <!-- Tu receta va en el archivo RECETA.md. Aquí solo responde las preguntas. -->
 
-**¿Probé mi receta a mano con mis 5 casos?** Sí / No
-**¿Tuve que corregirla? ¿Qué cambié?** _____
-**¿Cuántas versiones de mi receta escribí hasta la final?** _____
+**¿Probé mi receta a mano con mis 5 casos?** Sí 
+**¿Tuve que corregirla? ¿Qué cambié?** mucho_____
+**¿Cuántas versiones de mi receta escribí hasta la final?** __muchas___
 **¿Se me ocurrió otra forma de resolver el problema? ¿Cuál? ¿Por qué elegí la que usé?**
-_____
+___no__
 
 ## 6. Cómo compilar y ejecutar (Fase 3)
 
@@ -72,33 +69,32 @@ g++ -Wall -Wextra -std=c++17 main.cpp -o numero_mayor
 <!-- Pega aquí lo que muestra tu programa en pantalla con un caso de empate (por ejemplo 7, 7 y 3). -->
 
 ```
-_____
+_____ (corre tu programa con 7, 7 y 3 y pega aquí lo que salga)
 ```
 
 ## 8. De la receta al código (Fase 3)
 <!-- Para cada paso de TU receta, escribe la instrucción (o instrucciones) de C++ que lo implementa. Agrega las filas que necesites. -->
 
-| Paso de la receta | Instrucción de C++ que lo implementa |
-|---|---|
-| 1. Mensaje de bienvenida | _____ |
-| _____ | _____ |
-| _____ | _____ |
-| _____ | _____ |
-| _____ | _____ |
+Paso de la receta	Instrucción de C++ que lo implementa
+1. Mensaje de bienvenida	std::cout << "Programa: el mayor de tres numeros" << std::endl;
+2. Leer los tres números	primero = leerDecimal("Escribe el primer numero: "); y las otras dos líneas equivalentes para segundo y tercero
+3. Decidir cuál es el mayor	if (primero >= segundo && primero >= tercero) { ... } else if (segundo >= primero && segundo >= tercero) { ... } else { ... }
+4. Mostrar el resultado	std::cout << "El mayor de los tres numeros es: " << mayor << std::endl;
+5. Fin	return 0;
 
 **¿Hubo algún paso de mi receta que me costó traducir a C++? ¿Cuál y por qué?**
-_____
+___todo__
 
 ## 9. Experimentos (Fase 3)
 
 **Experimento A: ¿qué te dijo el compilador con `if (a > b > c)`? ¿Qué mostró el programa con 3, 2 y 1? ¿Por qué?**
-_____
+___sin respondr_
 
 **Experimento B: al cambiar `>=` por `>` (o al revés), ¿qué mostró el programa con 7, 7, 3 y con 5, 5, 5? ¿Por qué?**
-_____
+_____sin duda
 
 **Experimento C (opcional): con `if (a = b)`, ¿qué te dijo el compilador? ¿Qué le pasó al valor de `a`?**
-_____
+_____sin duda
 
 ## 10. Tabla de pruebas (Fase 4)
 
@@ -122,8 +118,8 @@ _____
 
 | # | ¿Qué falló o qué quise mejorar? | ¿Qué cambié? | ¿Funcionó? |
 |---|---|---|---|
-| 1 | _____ | _____ | _____ |
-| 2 | _____ | _____ | _____ |
+| 1 | ____nada_ | __nada___ | ___si__ |
+| 2 | ____nada_ | ___nada __ | __si___ |
 
 **Reto elegido (opcional):** _____
 
@@ -131,27 +127,27 @@ _____
 
 | Duda | Lo que ya intenté |
 |---|---|
-| _____ | _____ |
+| ___muchas__ | _no____ |
 
 ## 13. Reflexión final
 
 **¿Qué aprendí con esta práctica?**
-_____
+__Mejore lo aprendido___
 
 **Ahora que terminé, ¿qué cambiaría de mi proceso?**
-_____
+__Nada___
 
 **¿Qué fue lo más difícil y cómo lo resolví?**
-_____
+___Iniciarlo__
 
 **¿Qué pregunta me quedó sin responder?**
-_____
+____ninguna_
 
 **¿Qué fue más fácil para mí: la Práctica 3 (receta propia con un paso de ejemplo), la 4 (receta ajena) o esta (todo desde cero)? ¿Por qué?**
-_____
+__nada___
 
 **¿Pensé en los empates antes de programar o los descubrí al probar?**
-_____
+__no___
 
 ## 14. Lista de verificación antes de entregar (Fase 5)
 
